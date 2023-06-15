@@ -350,7 +350,7 @@ contract CarbonCC is Context, IBEP20, Ownable {
   string public _symbol;
   string public _name;
 
-  constructor() public {
+  constructor(){
     _name = "CarbonCC Token";
     _symbol = "CARBONCC";
     _decimals = 18;
@@ -489,18 +489,6 @@ contract CarbonCC is Context, IBEP20, Ownable {
     return true;
   }
 
-  /**
-   * @dev Creates `amount` tokens and assigns them to `msg.sender`, increasing
-   * the total supply.
-   *
-   * Requirements
-   *
-   * - `msg.sender` must be the token owner
-   */
-  function mint(uint256 amount) public onlyOwner returns (bool) {
-    _mint(_msgSender(), amount);
-    return true;
-  }
 
   /**
    * @dev Burn `amount` tokens and decreasing the total supply.
@@ -531,24 +519,6 @@ contract CarbonCC is Context, IBEP20, Ownable {
     _balances[sender] = _balances[sender].sub(amount, "BEP20: transfer amount exceeds balance");
     _balances[recipient] = _balances[recipient].add(amount);
     emit Transfer(sender, recipient, amount);
-  }
-
-  /** @dev Creates `amount` tokens and assigns them to `account`, increasing
-   * the total supply.
-   *
-   * Emits a {Transfer} event with `from` set to the zero address.
-   *
-   * Requirements
-   *
-   * - `to` cannot be the zero address.
-   */
-  function _mint(address account, uint256 amount) internal {
-    require(account != address(0), "BEP20: mint to the zero address");
-    require(_totalSupply + amount <= _maxSupply);
-
-    _totalSupply = _totalSupply.add(amount);
-    _balances[account] = _balances[account].add(amount);
-    emit Transfer(address(0), account, amount);
   }
 
   /**
