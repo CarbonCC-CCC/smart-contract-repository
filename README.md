@@ -2,4 +2,4 @@
 
 A list of smart contract related to CarbonCC
 
-  - CarbonCC Token: 0x62fc155fe93772Bd4F88ec1053f4b940b8Bdc0d8
+  - CarbonCC Token: 0x76228C625Cc69F38FBA9FaAc324Bce331958ED8D
